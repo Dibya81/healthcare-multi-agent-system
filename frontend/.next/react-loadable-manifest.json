@@ -1,0 +1,16 @@
+{
+  "../node_modules/@react-three/drei/core/VideoTexture.js -> hls.js": {
+    "id": "../node_modules/@react-three/drei/core/VideoTexture.js -> hls.js",
+    "files": []
+  },
+  "../node_modules/@react-three/drei/web/FaceLandmarker.js -> @mediapipe/tasks-vision": {
+    "id": "../node_modules/@react-three/drei/web/FaceLandmarker.js -> @mediapipe/tasks-vision",
+    "files": []
+  },
+  "components/sections/BodyVisualization.tsx -> @/components/three/HumanBody3D": {
+    "id": "components/sections/BodyVisualization.tsx -> @/components/three/HumanBody3D",
+    "files": [
+      "static/chunks/_app-pages-browser_src_components_three_HumanBody3D_tsx.js"
+    ]
+  }
+}

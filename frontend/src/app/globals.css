@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ══════════════════════════════════════════════
+   DESIGN TOKENS — Aura Health OS
+══════════════════════════════════════════════ */
+:root {
+  --aura-bg:       #f5f7ff;
+  --aura-surface:  #ffffff;
+  --aura-glass:    rgba(255,255,255,0.72);
+  --aura-border:   rgba(120,130,180,0.12);
+  --aura-shadow:   0 4px 24px rgba(80,80,140,0.08);
+  --aura-shadow-lg: 0 12px 48px rgba(80,80,140,0.14);
+
+  --aura-primary:  #5b8def;
+  --aura-teal:     #2dd4bf;
+  --aura-violet:   #8b5cf6;
+  --aura-rose:     #f43f5e;
+  --aura-amber:    #f59e0b;
+  --aura-green:    #10b981;
+  --aura-slate:    #64748b;
+
+  --text-1: #0f172a;
+  --text-2: #475569;
+  --text-3: #94a3b8;
+}
+
+/* ══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--aura-bg);
+  color: var(--text-1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+
+/* ══ CARD SYSTEM ══ */
+.card {
+  background: var(--aura-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--aura-border);
+  border-radius: 24px;
+  box-shadow: var(--aura-shadow);
+}
+
+.card-white {
+  background: var(--aura-surface);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.card-sm {
+  background: var(--aura-surface);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 16px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+}
+
+/* ══ WELLNESS PILL ══ */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.pill-green  { background: rgba(16,185,129,0.1);  color: #059669; }
+.pill-rose   { background: rgba(244,63,94,0.1);   color: #e11d48; }
+.pill-amber  { background: rgba(245,158,11,0.1);  color: #d97706; }
+.pill-blue   { background: rgba(91,141,239,0.12); color: #3b82f6; }
+.pill-violet { background: rgba(139,92,246,0.1);  color: #7c3aed; }
+.pill-teal   { background: rgba(45,212,191,0.1);  color: #0d9488; }
+
+/* ══ SCORE RING ══ */
+.score-ring {
+  background: conic-gradient(var(--aura-teal) var(--pct, 0%), #e2e8f0 0%);
+}
+
+/* ══ HOVER EFFECTS ══ */
+.hover-lift {
+  transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.22s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--aura-shadow-lg);
+}
+
+.hover-glow-teal:hover {
+  box-shadow: 0 0 24px rgba(45,212,191,0.25);
+}
+
+/* ══ TRANSITIONS ══ */
+.t { transition: all 0.18s ease; }
+
+/* ══ GRADIENT MESH BG ══ */
+.mesh-bg {
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(91,141,239,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 80% 70%, rgba(45,212,191,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 50% 10%, rgba(139,92,246,0.04) 0%, transparent 60%),
+    #f5f7ff;
+}
+
+/* ══ 3D BODY VIEWER ══ */
+.body-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(45,212,191,0.08) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 80% at 50% 80%, rgba(91,141,239,0.06) 0%, transparent 60%),
+    linear-gradient(180deg, #eef2ff 0%, #f0fdfa 100%);
+}
+
+/* ══ ANIMATIONS ══ */
+
+/* Breathing */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.025); }
+}
+.breathe { animation: breathe 4s ease-in-out infinite; }
+
+/* Heartbeat */
+@keyframes heartbeat {
+  0%, 100%        { transform: scale(1); }
+  14%             { transform: scale(1.12); }
+  28%             { transform: scale(1); }
+  42%             { transform: scale(1.08); }
+}
+.heartbeat { animation: heartbeat 0.85s ease-in-out infinite; }
+
+/* Slow float */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+.float { animation: float 5s ease-in-out infinite; }
+
+/* Fade in up */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.55s cubic-bezier(0.4,0,0.2,1) forwards; }
+
+/* Glow pulse (for AI dots) */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 currentColor; opacity: 0.9; }
+  50%      { box-shadow: 0 0 0 5px transparent; opacity: 0.6; }
+}
+.glow-pulse { animation: glowPulse 2s ease-in-out infinite; }
+
+/* Scan line (body viewer) */
+@keyframes scanDown {
+  0%   { top: 8%;  opacity: 0; }
+  5%   { opacity: 0.6; }
+  95%  { opacity: 0.6; }
+  100% { top: 92%; opacity: 0; }
+}
+.scan-bar { animation: scanDown 3.5s ease-in-out infinite; }
+
+/* Thinking dots */
+@keyframes dot {
+  0%, 80%, 100% { transform: scale(0.7); opacity: 0.3; }
+  40%           { transform: scale(1);   opacity: 1; }
+}
+.dot-1 { animation: dot 1.4s ease-in-out infinite 0s; }
+.dot-2 { animation: dot 1.4s ease-in-out infinite 0.2s; }
+.dot-3 { animation: dot 1.4s ease-in-out infinite 0.4s; }
+
+/* ECG */
+@keyframes ecgDraw {
+  0%   { stroke-dashoffset: 500; }
+  100% { stroke-dashoffset: 0; }
+}
+.ecg-stroke {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: ecgDraw 2.2s linear infinite;
+}
+
+/* Orbit ring */
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.orbit { animation: orbit 8s linear infinite; }
+.orbit-rev { animation: orbit 12s linear infinite reverse; }
+
+/* Progress shimmer */
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+.shimmer-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  animation: shimmer 2s infinite;
+}
+
+/* Score counter */
+@keyframes countIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.count-in { animation: countIn 0.5s ease forwards; }
+
+/* Slide in from right */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.slide-right { animation: slideInRight 0.4s ease forwards; }
+
+/* ══ GLASS BUTTON ══ */
+.btn-glass {
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.8);
+  border-radius: 12px;
+  transition: all 0.18s ease;
+}
+.btn-glass:hover {
+  background: white;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #5b8def, #3b67d4);
+  color: white;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.18s ease;
+  box-shadow: 0 4px 12px rgba(91,141,239,0.35);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(91,141,239,0.45);
+}
+
+/* ══ DIVIDER ══ */
+.divider { height: 1px; background: rgba(0,0,0,0.05); }
+
+/* ══ ACTIVE NAV ══ */
+.nav-active {
+  background: linear-gradient(135deg, rgba(91,141,239,0.12), rgba(45,212,191,0.08));
+  color: var(--aura-primary);
+}
+
+/* ══ WELLNESS RING TRACK ══ */
+.ring-track { stroke: rgba(100,116,139,0.08); }
+.ring-fill  { transition: stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1); }
+
+/* ══ METRIC CARD INNER ══ */
+.metric-inner {
+  background: linear-gradient(145deg, rgba(255,255,255,0.9), rgba(245,247,255,0.6));
+}
